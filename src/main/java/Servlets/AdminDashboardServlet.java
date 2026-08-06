@@ -23,9 +23,9 @@ public class AdminDashboardServlet extends HttpServlet {
             leaves = LeaveDao.getAllLeave();
             req.setAttribute("leaves", leaves);
 
-            RequestDispatcher dispatcher =req.getRequestDispatcher("adminDashboard.jsp");
-
+            RequestDispatcher dispatcher =req.getRequestDispatcher("/Adminjsp/adminDashboard.jsp");
             dispatcher.forward(req, resp);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

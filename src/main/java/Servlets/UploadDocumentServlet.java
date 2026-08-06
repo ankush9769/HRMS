@@ -34,7 +34,7 @@ public class UploadDocumentServlet extends HttpServlet {
 
         if (filePart == null || filePart.getSize() == 0) {
             req.setAttribute("error","Please select a document.");
-            RequestDispatcher rd = req.getRequestDispatcher("documents.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("employeeDocument.jsp");
             rd.forward(req, resp);
             return;
         }
@@ -46,7 +46,7 @@ public class UploadDocumentServlet extends HttpServlet {
         if (!contentType.equals("application/pdf") && !contentType.equals("image/jpeg") && !contentType.equals("image/png")) {
 
             req.setAttribute("error","Only PDF, JPG and PNG files are allowed.");
-            RequestDispatcher rd = req.getRequestDispatcher("documents.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("employeeDocument.jsp");
             rd.forward(req, resp);
             return;
         }
@@ -73,7 +73,7 @@ public class UploadDocumentServlet extends HttpServlet {
                 resp.sendRedirect("documents");
             } else {
                 req.setAttribute("error","Document upload failed.");
-                RequestDispatcher rd = req.getRequestDispatcher("documents.jsp");
+                RequestDispatcher rd = req.getRequestDispatcher("employeeDocument.jsp");
                 rd.forward(req, resp);
             }
 

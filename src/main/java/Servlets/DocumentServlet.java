@@ -34,8 +34,14 @@
                         documents = DocumentDao.getAllDocuments();
                     }
                     req.setAttribute("documents", documents);
-                    RequestDispatcher rd = req.getRequestDispatcher("documents.jsp");
-                    rd.forward(req, resp);
+                    if ("employee".equalsIgnoreCase(user.getRole())) {
+                        RequestDispatcher rd = req.getRequestDispatcher("/Employeejsp/employeeDocument.jsp");
+                        rd.forward(req, resp);
+                    }else{
+                        RequestDispatcher rd = req.getRequestDispatcher("/Adminjsp/adminDocument.jsp");
+                        rd.forward(req, resp);
+                    }
+
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);

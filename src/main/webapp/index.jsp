@@ -1,185 +1,59 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>HRMS | Sign In</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", Arial, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            background: #071426;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-        }
-
-        .login-container {
-            width: 420px;
-            background: #0d1b2f;
-            padding: 42px 40px;
-            border-radius: 14px;
-            border: 1px solid #1d3557;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
-        }
-
-        /* HRMS Branding */
-        .brand {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
-        .brand h1 {
-            font-size: 34px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-
-        .brand-line {
-            width: 45px;
-            height: 2px;
-            background: #ffffff;
-            margin: 0 auto;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 7px;
-        }
-
-        .description {
-            text-align: center;
-            font-size: 13px;
-            color: #b8c4d4;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 21px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-
-        input {
-            width: 100%;
-            padding: 13px 14px;
-            background: #071426;
-            border: 1px solid #29415f;
-            border-radius: 7px;
-            color: #ffffff;
-            font-size: 14px;
-            outline: none;
-            transition: 0.25s ease;
-        }
-
-        input::placeholder {
-            color: #7f91a8;
-        }
-
-        input:focus {
-            border-color: #ffffff;
-        }
-
-        .signin-btn {
-            width: 100%;
-            padding: 13px;
-            margin-top: 5px;
-            background: #ffffff;
-            color: #071426;
-            border: none;
-            border-radius: 7px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.25s ease;
-        }
-
-        .signin-btn:hover {
-            background: #dce5ef;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 27px;
-            font-size: 12px;
-            color: #7f91a8;
-        }
-    </style>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/glass.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
+<body class="glass-body">
+<main class="auth-page">
+    <div class="auth-shell">
+        <section class="glass-hero auth-branding">
+            <div class="auth-brand-row">
+                <span class="auth-brand-logo"><i class="bi bi-people-fill"></i></span>
+                HRMS
+            </div>
+            <div class="glass-kicker"><i class="bi bi-shield-lock"></i> Secure employee portal</div>
+            <h1 class="auth-title" style="margin-top:18px;">Premium Human Resource Management</h1>
+            <p class="auth-subtitle">
+                Manage employees, leaves, documents, and profiles from one elegant workspace designed with a Liquid Glass interface.
+            </p>
+            <div class="glass-chip-row" style="margin-top:22px;">
+                <span class="glass-chip"><i class="bi bi-lightning-charge"></i> Fast workflows</span>
+                <span class="glass-chip"><i class="bi bi-stars"></i> Premium UI</span>
+                <span class="glass-chip"><i class="bi bi-device-desktop"></i> Responsive</span>
+            </div>
+        </section>
 
-<body>
+        <section class="glass-auth-card">
+            <div class="auth-logo"><i class="bi bi-person-lock"></i></div>
+            <div class="auth-header">
+                <h2>Sign in</h2>
+                <p>Continue to your HRMS dashboard.</p>
+            </div>
 
-<div class="login-container">
+            <form action="signin" method="post">
+                <div class="glass-field" style="margin-bottom:18px;">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" name="email" class="glass-control" placeholder="Enter your email" required>
+                </div>
 
-    <div class="brand">
-        <h1>HRMS</h1>
-        <div class="brand-line"></div>
+                <div class="glass-field" style="margin-bottom:22px;">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" class="glass-control" placeholder="Enter your password" required>
+                </div>
+
+                <button class="glass-btn" type="submit" style="width:100%;">
+                    <i class="bi bi-box-arrow-in-right"></i> Sign In
+                </button>
+            </form>
+
+            <p class="auth-note">Human Resource Management System</p>
+        </section>
     </div>
-
-    <div class="subtitle">
-        Sign in to Employee Operations
-    </div>
-
-    <div class="description">
-        Access your employee management portal
-    </div>
-
-    <form action="signin" method="post">
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required>
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required>
-        </div>
-
-        <button type="submit" class="signin-btn">
-            Sign In
-        </button>
-
-    </form>
-
-    <div class="footer">
-        Human Resource Management System
-    </div>
-
-</div>
-
+</main>
 </body>
 </html>
-

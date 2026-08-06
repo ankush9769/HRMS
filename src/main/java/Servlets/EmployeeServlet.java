@@ -25,7 +25,7 @@ public class EmployeeServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         req.setAttribute("employees", employees);
-        RequestDispatcher rd = req.getRequestDispatcher("Employee.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/Adminjsp/Employee.jsp");
         rd.forward(req,resp);
     }
 

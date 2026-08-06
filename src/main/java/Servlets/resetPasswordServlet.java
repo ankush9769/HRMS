@@ -13,7 +13,7 @@ import utils.PasswordUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
-@WebServlet("/resetPassword")
+@WebServlet("/resetPasswords")
 public class resetPasswordServlet extends HttpServlet {
 
     @Override
@@ -34,7 +34,7 @@ public class resetPasswordServlet extends HttpServlet {
                     try {
                         User updatedUser = UserDao.resetPassword(user.getEmail(), hashedPass);
                         session.setAttribute("user", updatedUser);
-                       RequestDispatcher rd = req.getRequestDispatcher("profile.jsp");
+                       RequestDispatcher rd = req.getRequestDispatcher("/Employeejsp/profile.jsp");
                         rd.forward(req, resp);
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -42,12 +42,12 @@ public class resetPasswordServlet extends HttpServlet {
 
                 } else {
                     req.setAttribute("error", "New passwords do not match");
-                    RequestDispatcher rd = req.getRequestDispatcher("resetPassword.jsp");
+                    RequestDispatcher rd = req.getRequestDispatcher("/Employeejsp/resetPassword.jsp");
                     rd.forward(req, resp);
                 }
             } else {
                 req.setAttribute("error", "Current password is incorrect");
-                RequestDispatcher rd = req.getRequestDispatcher("resetPassword.jsp");
+                RequestDispatcher rd = req.getRequestDispatcher("/Employeejsp/resetPassword.jsp");
                 rd.forward(req, resp);
             }
 

@@ -26,12 +26,16 @@ public class LeaveServlet extends HttpServlet {
             List<Leave> leaves;
             if (role.equals("employee")) {
                 leaves = LeaveDao.getLeavesByUserId(user.getId());
+                req.setAttribute("leaves", leaves);
+                RequestDispatcher rd = req.getRequestDispatcher("/Employeejsp/employeeLeave.jsp");
+                rd.forward(req,resp);
             } else {
                leaves = LeaveDao.getAllLeave();
+                req.setAttribute("leaves", leaves);
+                RequestDispatcher rd = req.getRequestDispatcher("/Adminjsp/adminLeave.jsp");
+                rd.forward(req,resp);
             }
-            req.setAttribute("leaves", leaves);
-            RequestDispatcher rd = req.getRequestDispatcher("Leave.jsp");
-            rd.forward(req,resp);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
